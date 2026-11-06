@@ -17,6 +17,7 @@ load("@protobuf//bazel:proto_library.bzl", "proto_library")
 load("@protobuf//bazel:py_proto_library.bzl", "py_proto_library")
 
 load("//utils:build_defs.bzl", "graph_mining_cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 package(
     default_visibility = ["//visibility:public"],
