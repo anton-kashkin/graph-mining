@@ -15,6 +15,7 @@
 load("@protobuf//bazel:cc_proto_library.bzl", "cc_proto_library")
 load("@protobuf//bazel:proto_library.bzl", "proto_library")
 load("@protobuf//bazel:py_proto_library.bzl", "py_proto_library")
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
 
 package(
         default_visibility = ["//visibility:public"],
@@ -30,6 +31,19 @@ cc_binary(
         "//in_memory/clustering:config_cc_proto",
         "//in_memory/clustering:graph",
         "//in_memory/clustering/hac:parhac",
+        "@abseil-cpp//absl/status",
+    ],
+)
+
+cc_binary(
+    name = "terahac_cluster",
+    srcs = ["terahac_cluster.cc"],
+    deps = [
+        "//in_memory:status_macros",
+        "//in_memory/clustering:config_cc_proto",
+        "//in_memory/clustering:graph",
+        "//in_memory/clustering/hac:terahac",
+        "@abseil-cpp//absl/log:initialize",
         "@abseil-cpp//absl/status",
     ],
 )
